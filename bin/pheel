@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# ABOUTME: CLI entry point for the pheelblogging gem.
+# ABOUTME: Delegates to Thor-based command handlers.
+
+require_relative "../lib/pheelblogging"
+
+Pheelblogging::CLI.start(ARGV)

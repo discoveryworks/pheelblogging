@@ -1,0 +1,25 @@
+# Gem build artifacts
+*.gem
+pkg/
+
+# Bundle
+.bundle/
+vendor/bundle/
+
+# RSpec
+coverage/
+.rspec_status
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# macOS
+.DS_Store
+
+# Jekyll (if we ever build the docs as a site)
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
