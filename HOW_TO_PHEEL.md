@@ -53,7 +53,7 @@ Not just product-market hypotheses; also problem-solution hypotheses. Lean Hypot
 
 ### Explorations & Experiments
 
-"Exploration" well-describes less-formal explorations (conversations, musings, comparative research), while "experiments" connotes a bit more rigor (user tests, prototypes, interventions).
+"Exploration" well-describes less-formal explorations (conversations, musings, comparative research), while "experiments" connotes a bit more rigor (user tests, prototypes, interventions). Honestly, "PHELblog" just didn't sound as good.
 
 ### Learnings
 
@@ -63,7 +63,7 @@ First there's information, then there's data, then there're insights. "Learnings
 
 ### Canonical Source of Truth
 
-Brook's law teaches us that as team size increases linearly, the amount of communication increases exponentially. Translation: OMG your inbox is overflowing.
+[Brooks's law](https://en.wikipedia.org/wiki/Brooks%27s_law) teaches us that as team size increases linearly, the amount of communication increases exponentially. Translation: OMG your inbox is overflowing.
 
 Defaulting to a communal shared space solves this whole class of problem. There's only one place to look for things, and everyone knows where it is. Bonus: when new members join the team, it's *real* easy to help them get up to speed.
 
@@ -81,24 +81,51 @@ But a blog? Each post has a date on it. Is the post recent? It's probably still 
 
 ---
 
-## PHEELblogging with LLMs
+## PHEELblogging in practice
 
-LLMs write a ton of planning files. They'll dump `UPPERCASE.md` files into your `/docs` folder faster than you can review them. This is actually great—they're PHEELblogging! We just need to give them some conventions.
+- All work products should be in blog format
+- I like to use static site generators (Jekyll, Hugo, Ghosty, etc.), because
+- you can start with a big pile of markdown files an a folder called `pheels`. 
+- I like Jekyll-compliant filenames (`YYYY-MM-DD-here-is-my-title.md`) and frontmatter 
+- use the `category:` field to designate which kind of PHEEL it is, and 
+- use tags for topics (e.g. "coupons", "recommendations", "front-end", etc.) or modalities (e.g. "user test data", "performance benchmarks", "for pitch deck", "onboarding", etc.)
 
-### Architecture Decision Records (ADRs)
-
-[ADRs](https://adr.github.io/) are a well-established practice for capturing architectural decisions. They fit naturally into PHEELblogging as a specific category. We keep them in `docs/adr/` and let them follow their own conventions—they've earned it.
-
-### Folder Structure
+You don't *actually* need to build a blog! When it's a small team (or a solo project), often the Pile Of Markdown is enough w/o invoking SSG software. You can defer the blog-building until it's actually necessary (usually when a few more people join, or the blog gets big enough to want better navigation, tagging, etc.)
 
 ```
 your-project/
 └── docs/
-    ├── adr/           # Architecture Decision Records (NNN-title.md)
-    └── plans/         # Implementation plans (YYYY-MM-DD-title.md)
+    └── pheels/        
+      ├── 2026-01-01-plan-for-adding-product-recommendations.md             # `category: Plan`
+      ├── 2026-01-02-collaborative-filtering-gives-best-recommendations.md  # `category: Hypothesis`
+      ├── 2026-01-04-survey-of-collaborative-filtering-approaches.md        # `category: Exploration`
+      ├── 2026-01-04-stochastic-filter-experiment.md                        # `category: Experiment `
+      └── 2026-01-05-small-datasets-need-hybrid-approaches.md               # `category: Learning`
 ```
 
-Start with just these two. Add `docs/pheels/` later if you want the full Jekyll blog experience.
+## PHEELblogging with LLMs
+
+LLMs write a ton of planning files. They'll dump `UPPERCASE.md` files into your `/docs` folder faster than you can review them. This is actually great—they're PHEELblogging! We just need to give them some conventions. Yeah, I know, now we have `category: plans` in `docs/pheels` as well as `docs/plans`. I tend to keep human-written plans in the former and LLM-created plans in the latter (it's their default location and more bother than it's worth to move it). It's all just markdown, so when yr building a blog (or grepping the docs folder) it's easy to find and interleave.
+
+```
+your-project/
+└── docs/
+    ├── pheels/        # Plans, Hypotheses, Explorations, Experiments, and Learnings
+    └── plans/         # LLM-written Implementation plans (YYYY-MM-DD-title.md)
+```
+
+### Architecture Decision Records (ADRs)
+
+[ADRs](https://adr.github.io/) are a well-established practice for capturing architectural decisions. They fit naturally into PHEELblogging as a specific category. We keep them in `docs/adr/` and let them follow their own conventions—ADRs ain't broke so we're not trying to fix them (though we do use frontmatter for the metadata, which is traditionally plaintext). It's just another folder to pull into the blog.
+
+```
+your-project/
+└── docs/
+    ├── pheels/        # Plans, Hypotheses, Explorations, Experiments, and Learnings
+    ├── adr/           # Architecture Decision Records (NNN-title.md)
+    └── plans/         # LLM-written Implementation plans (YYYY-MM-DD-title.md)
+```
+
 
 ### Frontmatter
 
@@ -109,8 +136,8 @@ Add Jekyll-compatible frontmatter to every file:
 layout: post
 title: "Human-Readable Title"
 date: YYYY-MM-DD
-category: adrs | plans | pheels
-tags: [plan, hypothesis, exploration, experiment, learning]
+category: adr | plan | hypothesis | exploration | experiment | learning
+tags: ["front-end", "performance benchmark", "Q3" ] # topics or modalities are common tags
 ---
 ```
 
@@ -120,21 +147,8 @@ This does two things:
 
 ### File Naming
 
-**ADRs**: `NNN-short-description.md` (e.g., `001-use-postgresql.md`)
-
-**Plans/PHEELs**: `YYYY-MM-DD-short-description.md` (e.g., `2026-02-06-api-redesign.md`)
-
-### Tags
-
-Use tags to indicate the *type* of PHEELing:
-
-- `plan` - Decisions about what to do next
-- `hypothesis` - Assumptions being tested
-- `exploration` - Research and investigation
-- `experiment` - Prototypes and tests
-- `learning` - Insights and retrospectives
-
-Plus domain-specific tags for your project.
+- ADR: `NNN-short-description.md` (e.g., `001-use-postgresql.md`)
+- Plans/PHEELs: `YYYY-MM-DD-short-description.md` (e.g., `2026-02-06-api-redesign.md`)
 
 ---
 
@@ -145,7 +159,7 @@ A valid PHEELblog entry has:
 - [ ] Frontmatter present and valid YAML
 - [ ] `title` specified
 - [ ] `date` specified (in frontmatter or filename)
-- [ ] `category` is one of: `adrs`, `plans`, `pheels`
+- [ ] `category` is one of: `adrs`, `plans`, `hypothesis`, `exploration`, `experiment`, or `learning`.
 - [ ] File is in correct folder for its category
 - [ ] Filename follows naming convention
 - [ ] Headings use proper markdown (##, not **bold**)
