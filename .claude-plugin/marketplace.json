@@ -1,0 +1,19 @@
+{
+  "name": "pheelblogging",
+  "owner": {
+    "name": "Jonathan Berger",
+    "email": "jonathanpberger@gmail.com"
+  },
+  "metadata": {
+    "description": "PHEELblogging skill for Claude Code - create structured Plans, Hypotheses, Explorations, Experiments, and Learnings",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "pheelblogging",
+      "source": ".",
+      "description": "Create structured PHEELblog entries following Jekyll conventions",
+      "version": "1.0.0"
+    }
+  ]
+}
