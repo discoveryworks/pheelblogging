@@ -11,7 +11,10 @@
   "plugins": [
     {
       "name": "pheelblogging",
-      "source": ".",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/discoveryworks/pheelblogging.git"
+      },
       "description": "Create structured PHEELblog entries following Jekyll conventions",
       "version": "1.0.0"
     }
