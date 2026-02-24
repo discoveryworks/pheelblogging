@@ -1,6 +1,6 @@
 # PHEELblogging
 
-🪞 Why PHEELblogging?
+🌌 Why PHEELblogging?
 =====================
 
 It's **hard** to stay on top of all the communication artifacts a team throws off (much less be able to find things when you need them)!
@@ -20,7 +20,7 @@ This record ought to be 1) immutable, 2) chronological, 3) narrative, and 4) com
 See the [original blog post](https://jonathanpberger.wordpress.com/2023/02/01/494/) for the full philosophy, or read `HOW_TO_PHEEL.md` in this repo.
 
 
-🪞🪞 Who benefits from PHEELblogging?
+🌌🌌 Who benefits from PHEELblogging?
 =====================================
 
 - **Teams** who need a Canonical Source of Truth without drowning in emails and Sharepoint PDFs
@@ -29,7 +29,7 @@ See the [original blog post](https://jonathanpberger.wordpress.com/2023/02/01/49
 - **New team members** who need to get up to speed with 1) the current thinking of the team, and 2) how you got there
 
 
-🪞🪞🪞 What exactly does this do?
+🌌🌌🌌 What exactly does this do?
 =================================
 
 **PHEELblogging is a social convention first, technology second.**
@@ -39,11 +39,12 @@ It's a working agreement among your team that Plans, Hypotheses, Explorations, E
 This repo contains:
 
 1. **The Practice** (`HOW_TO_PHEEL.md`) - The PHEELblogging philosophy and conventions
-2. **The Tools** (optional) - A Ruby gem providing linting and scaffolding to help teams stay consistent
-3. **The Example** - This repo's own `docs/` folder recursivelydemonstrates the practice—dogfooding ftw!
+2. **The Claude Code Skill** (`.claude-plugin/`) - A plugin that teaches Claude how to create PHEELblog entries
+3. **The Tools** (optional) - A Ruby gem providing linting and scaffolding to help teams stay consistent
+4. **The Example** - This repo's own `docs/` folder recursively demonstrates the practice—dogfooding ftw!
 
 
-🪞🪞🪞🪞 How do I use it?
+🌌🌌🌌🌌 How do I use it?
 =========================
 
 ### The Practice (no tools required)
@@ -69,6 +70,20 @@ tags: [ux-research, project-x]
 
 That's it. You're PHEELblogging.
 
+### The Claude Code Skill (optional)
+
+If you use Claude Code, install the skill to teach Claude how to create PHEELblog entries automatically:
+
+```bash
+/plugin install https://github.com/jonathanpberger/pheelblogging.git
+```
+
+Then just say "PHEEL blog this" and Claude will:
+- Determine whether it should be a PHEEL, plan, or ADR
+- Choose the appropriate category (plan, hypothesis, exploration, experiment, learning)
+- Create the file with proper Jekyll frontmatter
+- Save it in the right location
+
 ### The Tools (optional)
 
 ```bash
@@ -80,7 +95,7 @@ pheel new plan "API redesign"           # Create a new plan
 ```
 
 
-🪞🪞🪞🪞🪞 Extras
+🌌🌌🌌🌌🌌 Extras
 =================
 
 ### The Gentle Evolution

@@ -1,0 +1,10 @@
+{
+  "name": "pheelblogging",
+  "description": "Create structured PHEELblog entries (Plans, Hypotheses, Explorations, Experiments, Learnings) following Jekyll conventions",
+  "author": {
+    "name": "Jonathan Berger",
+    "email": "jonathanpberger@gmail.com"
+  },
+  "homepage": "https://github.com/jonathanpberger/pheelblogging",
+  "version": "1.0.0"
+}
