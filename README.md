@@ -75,10 +75,12 @@ That's it. You're PHEELblogging.
 If you use Claude Code, install the skill to teach Claude how to create PHEELblog entries automatically:
 
 ```bash
-/plugin install https://github.com/jonathanpberger/pheelblogging.git
+/plugin marketplace add discoveryworks/pheelblogging
+/plugin marketplace update pheelblogging
+/plugin install pheelblogging
 ```
 
-Then just say "PHEEL blog this" and Claude will:
+Restart Claude Code, then just say "PHEEL blog this" and Claude will:
 - Determine whether it should be a PHEEL, plan, or ADR
 - Choose the appropriate category (plan, hypothesis, exploration, experiment, learning)
 - Create the file with proper Jekyll frontmatter
